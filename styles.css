@@ -1,0 +1,548 @@
+/* Pretendard 폰트 불러오기 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+:root {
+  --primary-font: "Pretendard";
+  --secondary-font: "Pretendard";
+  --container-width: 87%;
+  --notion-max-width: 87%;
+  --border-radius: 8px;
+  --navbar-height: 80px;
+  --navbar-padding: 2rem;
+  
+  /* 진한 네이비를 메인 컬러로 사용 */
+  --fg-color-h: 220;
+  --fg-color-s: 70%;
+  --fg-color-l: 15%;
+  --fg-color: hsl(var(--fg-color-h), var(--fg-color-s), var(--fg-color-l));
+  --fg-color-3: hsla(var(--fg-color-h), var(--fg-color-s), var(--fg-color-l), 0.8);
+  
+  /* 밝은 배경색 */
+  --bg-color-h: 220;
+  --bg-color-s: 25%;
+  --bg-color-l: 97%;
+  --bg-color: hsl(var(--bg-color-h), var(--bg-color-s), var(--bg-color-l));
+  
+  /* 네비게이션 컬러 */
+  --navbar-fg-color: white;
+  --navbar-bg-color: var(--fg-color);
+  --navbar-btn-bg-color: #F0F4FF;
+  --navbar-btn-fg-color: var(--fg-color);
+  
+  /* 제목 크기 */
+  --heading-font-size: 1.5rem;
+  --heading1: calc(var(--heading-font-size) * 3);
+  --heading2: calc(var(--heading-font-size) * 2);
+  --heading3: calc(var(--heading-font-size) * 1.5);
+  
+  /* 푸터 컬러 */
+  --footer-bg-color: var(--fg-color);
+  --footer-fg-color: white;
+  
+  /* 노션 색상 변수 */
+  --notion-gray-h: 220;
+  --notion-gray-s: 70%;
+  --notion-gray-l: 15%;
+  --notion-gray: hsl(var(--notion-gray-h), var(--notion-gray-s), var(--notion-gray-l));
+  --notion-gray_background: hsl(var(--notion-gray-h), var(--notion-gray-s), 95%);
+  --notion-gray_background_co: var(--notion-gray);
+  
+  /* 노션 블루 변수 - 네이비 컬러로 설정 */
+  --notion-blue-h: 220; 
+  --notion-blue-s: 70%;
+  --notion-blue-l: 35%;
+  --notion-blue: hsl(var(--notion-blue-h), var(--notion-blue-s), var(--notion-blue-l));
+  --notion-blue_background: hsl(var(--notion-blue-h), var(--notion-blue-s), 95%);
+  --notion-blue_background_co: var(--notion-blue);
+  
+  /* 골드 컬러 추가 - 성스러운 분위기를 위한 보조 색상 */
+  --notion-yellow-h: 45;
+  --notion-yellow-s: 80%;
+  --notion-yellow-l: 80%;
+  --notion-yellow: hsl(var(--notion-yellow-h), var(--notion-yellow-s), var(--notion-yellow-l));
+  --notion-yellow_background: hsl(var(--notion-yellow-h), var(--notion-yellow-s), 95%);
+  --notion-yellow_background_co: var(--notion-yellow);
+}
+
+/* 다크 모드 설정 */
+.dark-mode {
+  --bg-color-h: 220;
+  --bg-color-s: 70%;
+  --bg-color-l: 10%;
+  --bg-color: hsl(var(--bg-color-h), var(--bg-color-s), var(--bg-color-l));
+  
+  --fg-color-h: 0;
+  --fg-color-s: 0%;
+  --fg-color-l: 100%;
+  --fg-color: hsl(var(--fg-color-h), var(--fg-color-s), var(--fg-color-l));
+  --fg-color-3: hsla(var(--fg-color-h), var(--fg-color-s), var(--fg-color-l), 0.8);
+  
+  --navbar-btn-bg-color: var(--notion-yellow);
+  --navbar-btn-fg-color: var(--notion-gray);
+  
+  --footer-bg-color: hsl(var(--fg-color-h), var(--fg-color-s), 5%);
+}
+
+/* 기본 레이아웃 스타일 */
+.notion-page {
+  background: var(--bg-color);
+  padding: 0 min(5vw, 80px);
+  width: 100%;
+}
+
+.notion-page-no-cover {
+  margin-top: 0 !important;
+}
+
+/* 네비게이션 바 */
+.bullet-navbar {
+  background: var(--navbar-bg-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-item {
+  color: var(--navbar-fg-color) !important;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.navbar-item:hover {
+  opacity: 0.8;
+  background-color: transparent !important;
+}
+
+.active-nav {
+  position: relative;
+}
+
+.active-nav:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background-color: var(--notion-yellow);
+}
+
+.nav-cta-btn {
+  background-color: var(--navbar-btn-bg-color);
+  border-radius: var(--border-radius);
+  color: var(--navbar-btn-fg-color) !important;
+  font-weight: 600;
+  padding: 12px 24px;
+  transition: all 0.3s ease;
+}
+
+.nav-cta-btn:hover {
+  box-shadow: 0 0 20px 0 rgba(var(--notion-yellow-h), var(--notion-yellow-s), var(--notion-yellow-l), 0.5);
+  transform: translateY(-2px);
+}
+
+/* 헤딩 스타일 */
+.notion-h1 {
+  color: var(--fg-color);
+  font-family: var(--primary-font);
+  font-size: var(--heading1);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.notion-h1:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--notion-blue), var(--notion-yellow));
+}
+
+.notion-h2 {
+  color: var(--fg-color);
+  font-family: var(--primary-font);
+  font-size: var(--heading2);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.notion-h3 {
+  color: var(--fg-color);
+  font-family: var(--primary-font);
+  font-size: var(--heading3);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* 텍스트 스타일 */
+.notion-text {
+  color: var(--fg-color-3);
+  font-family: var(--primary-font);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* 버튼 스타일 */
+.bullet-btn {
+  background: var(--notion-blue);
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: white;
+  cursor: pointer;
+  font-family: var(--primary-font);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 12px 24px;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.bullet-btn:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* 신성한 느낌의 버튼 애니메이션 효과 */
+.bullet-btn:before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  pointer-events: none;
+  animation: lightBeam 5s infinite linear;
+}
+
+@keyframes lightBeam {
+  0% {
+    transform: rotate(45deg) translateX(-100%);
+  }
+  100% {
+    transform: rotate(45deg) translateX(100%);
+  }
+}
+
+/* 콜아웃 스타일 */
+.notion-callout {
+  border: 1px solid rgba(var(--fg-color-h), var(--fg-color-s), var(--fg-color-l), 0.1);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.notion-callout:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.notion-callout-text {
+  margin-left: 12px;
+}
+
+/* 색상 배경 콜아웃 - 네이비 */
+.notion-gray_background_co {
+  background: var(--notion-gray);
+  border: none;
+  border-radius: var(--border-radius);
+  color: white;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.notion-gray_background_co .notion-callout-text {
+  color: white;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+
+/* 십자가 모양 배경 효과 - 신성한 느낌을 위한 장식 */
+.notion-gray_background_co:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.notion-gray_background_co:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translate(-50%, -50%) rotate(90deg);
+  z-index: 0;
+}
+
+/* 노란색 배경 콜아웃 - 금색으로 설정 */
+.notion-yellow_background_co {
+  background: var(--notion-yellow_background);
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--fg-color);
+  padding: 2rem;
+  position: relative;
+  border-left: 4px solid var(--notion-yellow);
+}
+
+.notion-yellow_background_co .notion-callout-text {
+  color: var(--fg-color);
+  font-weight: 500;
+}
+
+/* 토글 스타일 */
+.notion-toggle {
+  background: var(--bg-color);
+  border: 1px solid rgba(var(--fg-color-h), var(--fg-color-s), var(--fg-color-l), 0.1);
+  border-radius: var(--border-radius);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 1.5rem 0;
+  padding: 0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.notion-toggle:hover {
+  border-color: var(--notion-blue);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.notion-toggle summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1.2rem 1.5rem;
+  position: relative;
+}
+
+.notion-toggle div {
+  padding: 0 1.5rem 1.5rem;
+}
+
+summary:after {
+  content: "+";
+  color: var(--fg-color);
+  font-size: 1.5rem;
+  position: absolute;
+  right: 1.5rem;
+  top: 1rem;
+  transition: transform 0.3s ease;
+}
+
+details[open] summary:after {
+  content: "−";
+  transform: rotate(180deg);
+}
+
+/* 리스트 스타일 */
+.notion-list-disc {
+  list-style: none;
+  padding-inline-start: 2rem;
+  position: relative;
+}
+
+.notion-list-disc li {
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.notion-list-disc li:before {
+  content: "";
+  position: absolute;
+  left: -1.5rem;
+  top: 0.6rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--notion-blue);
+}
+
+/* 갤러리 그리드 스타일 */
+.notion-gallery-grid {
+  border: none;
+  gap: 2rem;
+}
+
+.notion-collection-card {
+  background: white;
+  border: none !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.notion-collection-card:hover {
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.notion-collection-card-cover {
+  border-radius: var(--border-radius) var(--border-radius) 0 0 !important;
+  overflow: hidden;
+}
+
+.notion-collection-card-body {
+  padding: 1.2rem !important;
+}
+
+.notion-page-title-text {
+  font-family: var(--primary-font);
+  font-weight: 600;
+}
+
+/* 푸터 스타일 */
+.bullet-footer {
+  background: var(--footer-bg-color);
+  color: var(--footer-fg-color);
+  padding: 3rem 0;
+}
+
+.footer-title {
+  color: var(--notion-yellow);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.footer-link {
+  color: var(--footer-fg-color);
+  font-size: 0.95rem;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer-link:hover {
+  opacity: 1;
+}
+
+.footer-copyright {
+  color: var(--footer-fg-color);
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* 블로그 스타일 */
+.blog_page_content .notion-h1 {
+  font-size: 2.5rem;
+  line-height: 1.3;
+}
+
+.blog_page_content .notion-h2 {
+  font-size: 2rem;
+  margin-top: 2.5rem;
+}
+
+.blog_page_content .notion-h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.blog_navigator {
+  background: var(--bg-color);
+  border: 1px solid rgba(var(--fg-color-h), var(--fg-color-s), var(--fg-color-l), 0.1);
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+  padding: 1.5rem;
+}
+
+.blog_navigator_title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.blog_navigator .blog_navigator_inner_container {
+  padding: 0.5rem 0;
+}
+
+/* 반응형 미디어 쿼리 */
+@media (max-width: 1024px) {
+  :root {
+    --heading1: calc(var(--heading-font-size) * 2.5);
+    --heading2: calc(var(--heading-font-size) * 1.8);
+    --heading3: calc(var(--heading-font-size) * 1.3);
+  }
+  
+  .notion-page {
+    padding: 0 5vw;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --heading1: calc(var(--heading-font-size) * 2);
+    --heading2: calc(var(--heading-font-size) * 1.6);
+    --heading3: calc(var(--heading-font-size) * 1.2);
+  }
+  
+  .notion-page {
+    padding: 0 4vw;
+  }
+  
+  .notion-h1:after {
+    width: 60px;
+  }
+  
+  .blog_page_content .notion-h1 {
+    font-size: 2rem;
+  }
+  
+  .blog_page_content .notion-h2 {
+    font-size: 1.6rem;
+  }
+  
+  .blog_page_content .notion-h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --heading1: calc(var(--heading-font-size) * 1.7);
+    --heading2: calc(var(--heading-font-size) * 1.4);
+    --heading3: calc(var(--heading-font-size) * 1.1);
+  }
+  
+  .notion-page {
+    padding: 0 3vw;
+  }
+  
+  .bullet-btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .notion-gallery-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
