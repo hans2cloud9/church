@@ -103,19 +103,19 @@
   font-size: 18px;
   font-weight: 600; /* 두께 증가 */
   padding: 0.5rem 1.5rem;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* 텍스트 그림자 추가 */
 }
 
 .navbar-item:hover {
   opacity: 0.9;
   background-color: transparent !important;
-  color: var(--notion-yellow) !important; /* 호버 시 색상 변경 */
+  color: white !important; /* 호버 시 색상을 하얀색으로 변경 */
 }
 
 .active-nav {
   position: relative;
-  color: var(--notion-yellow) !important; /* 활성 메뉴 강조 */
+  color: white !important; /* 활성 메뉴 강조 */
 }
 
 .active-nav:after {
@@ -126,7 +126,7 @@
   transform: translateX(-50%);
   width: 20px;
   height: 2px;
-  background-color: var(--notion-yellow);
+  background-color: white;
 }
 
 .nav-cta-btn {
@@ -142,8 +142,8 @@
 .nav-cta-btn:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   transform: translateY(-2px);
-  background-color: var(--notion-yellow); /* 호버 시 배경색 변경 */
-  color: var(--fg-color) !important;
+  background-color: var(--notion-blue); /* 호버 시 배경색 변경 */
+  color: white !important; /* 호버 시 글자색을 하얀색으로 변경 */
 }
 
 /* 헤딩 스타일 */
@@ -218,6 +218,8 @@
 .bullet-btn:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
+  background-color: var(--fg-color);
+  color: white !important; /* 호버 시 글자색을 하얀색으로 변경 */
 }
 
 /* 수정된 버튼 애니메이션 효과 - 전체 채우기 */
@@ -449,11 +451,12 @@ details[open] summary:after {
   color: var(--footer-fg-color);
   font-size: 0.95rem;
   opacity: 0.8;
-  transition: opacity 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .footer-link:hover {
   opacity: 1;
+  color: white !important; /* 호버 시 글자색을 하얀색으로 변경 */
 }
 
 .footer-copyright {
