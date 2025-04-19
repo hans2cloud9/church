@@ -548,81 +548,38 @@ details[open] summary:after {
   padding: 0.5rem 0;
 }
 
-/* 예배안내 섹션 스타일링 - 수정된 버전 */
-/* 예배안내 헤더 */
-#block-d6c7a6c4a7d64e2dbedf8bc2b16b5d16,  /* "예배안내" 헤더 아이디를 확인하고 변경해주세요 */
-#block-f5d901eba3d444a3b03b9eafe28c0aa3,  /* "예배 안내" 헤더 아이디를 확인하고 변경해주세요 */
-.notion-h2[data-block-id*="예배안내"],  /* 이 방법도 시도 */
-.notion-h2[data-block-id*="예배 안내"] {
-  position: relative;
-  padding-left: 45px;
-}
-
-/* 예배안내 헤더 이모지 */
-#block-d6c7a6c4a7d64e2dbedf8bc2b16b5d16:before,
-#block-f5d901eba3d444a3b03b9eafe28c0aa3:before,
-.notion-h2[data-block-id*="예배안내"]:before,
-.notion-h2[data-block-id*="예배 안내"]:before {
-  content: "⛪";
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-size: 1.8rem;
-}
-
-/* 예배안내 섹션 - 직접 타겟팅 */
-#block-5e9abea79eb94ddd814a98cca0a6fc75,  /* 예배안내 섹션 아이디를 확인하고 변경해주세요 */
-#block-8f237bed72894b7ca456db6c4ac77ef2,  /* 알맞은 아이디로 수정해주세요 */
-.notion-collection-list[data-block-id*="예배"] { /* 이 방법도 시도 */
-  background: var(--light-navy-bg);
-  border-radius: var(--border-radius);
-  margin: 2rem 0;
-  padding: 2rem;
+/* 예배 안내 섹션 배경색 적용 - 전체 너비 확장 */
+.notion-blue_background_co {
+  background-color: var(--light-navy-bg) !important; /* 연한 네이비 배경색 */
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  padding: 60px 0 !important;
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* 대안적 접근 - 일반적인 구조 타겟팅 */
-/* 예배안내 섹션 타겟팅 */
-.notion-column-list {
+/* 컨텐츠 너비 유지 */
+.notion-blue_background_co > .notion-callout-text {
+  max-width: var(--container-width, 1008px);
+  margin: 0 auto;
+  padding: 0 20px;
+  color: white !important;
   position: relative;
+  z-index: 2;
 }
 
-/* 첫 번째 컬럼 리스트를 예배안내 섹션으로 스타일링 */
-.notion-page > .notion-column-list:nth-of-type(1) {
-  background: var(--light-navy-bg);
-  border-radius: var(--border-radius);
-  margin: 2rem 0;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* 예배안내 섹션 내 텍스트 색상 */
-.notion-page > .notion-column-list:nth-of-type(1) * {
+/* 예배 안내 섹션 내 모든 텍스트 흰색으로 설정 */
+.notion-blue_background_co .notion-text,
+.notion-blue_background_co .notion-h2,
+.notion-blue_background_co .notion-h3,
+.notion-blue_background_co .notion-list-disc li {
   color: white !important;
 }
 
-/* 예배안내 카드 스타일링 */
-.notion-page > .notion-column-list:nth-of-type(1) .notion-column {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  margin: 0.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.notion-page > .notion-column-list:nth-of-type(1) .notion-column:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  background: rgba(255, 255, 255, 0.15);
-}
-
 /* 신성한 빛 효과 추가 */
-.notion-page > .notion-column-list:nth-of-type(1):before {
+.notion-blue_background_co:before {
   content: "";
   position: absolute;
   top: -50%;
@@ -632,6 +589,7 @@ details[open] summary:after {
   background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
   animation: holyLight 15s infinite linear;
   pointer-events: none;
+  z-index: 1;
 }
 
 @keyframes holyLight {
@@ -648,28 +606,106 @@ details[open] summary:after {
   }
 }
 
-/* 예배와 말씀 섹션 스타일링 - 다른 컬럼 리스트로 타겟팅 */
-.notion-page > .notion-column-list:nth-of-type(2),
-.notion-page > .notion-collection-view-wrapper:nth-of-type(1) {
-  background: var(--light-golden-bg);
+/* 예배 안내 카드 스타일링 */
+.notion-blue_background_co .notion-column {
+  background: rgba(255, 255, 255, 0.1);
   border-radius: var(--border-radius);
-  margin: 2rem 0;
-  padding: 2rem;
-  position: relative;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* 다가오는 행사 섹션 스타일링 */
-.notion-page > .notion-collection-view-wrapper:nth-of-type(2) {
-  background: var(--very-light-navy-bg);
-  border-radius: var(--border-radius);
-  margin: 2rem 0;
-  padding: 2rem;
-  position: relative;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+.notion-blue_background_co .notion-column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* 예배 안내 섹션 내 버튼 스타일 */
+.notion-blue_background_co .bullet-btn {
+  background-color: white;
+  color: var(--light-navy-bg) !important;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.notion-blue_background_co .bullet-btn:hover {
+  background-color: var(--notion-yellow);
+  color: var(--light-navy-bg) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* 십자가 모양 배경 효과 - 신성한 느낌을 위한 장식 */
+.notion-blue_background_co:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.notion-blue_background_co:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.05);
+  transform: translate(-50%, -50%) rotate(90deg);
+  z-index: 0;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
 /* 태블릿 미디어 쿼리 */
 @media (max-width: 1024px) {
   :root {
-    --heading1: calc(var(--heading-f
+    --heading1: calc(var(--heading-font-size) * 2.5);
+    --heading2: calc(var(--heading-font-size) * 1.8);
+    --heading3: calc(var(--heading-font-size) * 1.3);
+  }
+  
+  .notion-page {
+    padding: 0 20px;
+  }
+  
+  .notion-blue_background_co > .notion-callout-text {
+    padding: 0 20px;
+  }
+}
+
+/* 모바일 미디어 쿼리 */
+@media (max-width: 768px) {
+  :root {
+    --heading1: calc(var(--heading-font-size) * 2);
+    --heading2: calc(var(--heading-font-size) * 1.5);
+    --heading3: calc(var(--heading-font-size) * 1.2);
+  }
+  
+  .notion-h1 {
+    line-height: 1.4;
+  }
+  
+  .notion-h1:after {
+    width: 60px;
+  }
+  
+  .notion-blue_background_co {
+    padding: 40px 0 !important;
+  }
+  
+  .notion-blue_background_co > .notion-callout-text {
+    padding: 0 15px;
+  }
+  
+  .notion-blue_background_co .notion-column {
+    margin: 0.5rem 0;
+  }
+}
