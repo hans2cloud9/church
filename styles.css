@@ -23,11 +23,11 @@
   --bg-color-l: 97%;
   --bg-color: hsl(var(--bg-color-h), var(--bg-color-s), var(--bg-color-l));
   
-  /* 네비게이션 컬러 */
+  /* 네비게이션 컬러 - 글자색을 더 밝게 수정 */
   --navbar-fg-color: white;
   --navbar-bg-color: var(--fg-color);
-  --navbar-btn-bg-color: #F0F4FF;
-  --navbar-btn-fg-color: var(--fg-color);
+  --navbar-btn-bg-color: white; /* 버튼 배경을 더 밝게 */
+  --navbar-btn-fg-color: var(--fg-color); /* 버튼 글자색 유지 */
   
   /* 제목 크기 */
   --heading-font-size: 1.5rem;
@@ -44,7 +44,7 @@
   --notion-gray-s: 70%;
   --notion-gray-l: 15%;
   --notion-gray: hsl(var(--notion-gray-h), var(--notion-gray-s), var(--notion-gray-l));
-  --notion-gray_background: hsl(var(--notion-gray-h), var(--notion-gray-s), 95%);
+  --notion-gray_background: hsl(var(--notion-gray-h), calc(var(--notion-gray-s) - 30%), 95%);
   --notion-gray_background_co: var(--notion-gray);
   
   /* 노션 블루 변수 - 네이비 컬러로 설정 */
@@ -52,7 +52,7 @@
   --notion-blue-s: 70%;
   --notion-blue-l: 35%;
   --notion-blue: hsl(var(--notion-blue-h), var(--notion-blue-s), var(--notion-blue-l));
-  --notion-blue_background: hsl(var(--notion-blue-h), var(--notion-blue-s), 95%);
+  --notion-blue_background: hsl(var(--notion-blue-h), calc(var(--notion-blue-s) - 20%), 90%);
   --notion-blue_background_co: var(--notion-blue);
   
   /* 골드 컬러 추가 - 성스러운 분위기를 위한 보조 색상 */
@@ -79,8 +79,6 @@
   
   --navbar-btn-bg-color: var(--notion-yellow);
   --navbar-btn-fg-color: var(--notion-gray);
-  
-  --footer-bg-color: hsl(var(--fg-color-h), var(--fg-color-s), 5%);
 }
 
 /* 기본 레이아웃 스타일 */
@@ -94,7 +92,7 @@
   margin-top: 0 !important;
 }
 
-/* 네비게이션 바 */
+/* 네비게이션 바 - 글자색 가시성 개선 */
 .bullet-navbar {
   background: var(--navbar-bg-color);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -103,18 +101,21 @@
 .navbar-item {
   color: var(--navbar-fg-color) !important;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600; /* 두께 증가 */
   padding: 0.5rem 1.5rem;
   transition: opacity 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* 텍스트 그림자 추가 */
 }
 
 .navbar-item:hover {
-  opacity: 0.8;
+  opacity: 0.9;
   background-color: transparent !important;
+  color: var(--notion-yellow) !important; /* 호버 시 색상 변경 */
 }
 
 .active-nav {
   position: relative;
+  color: var(--notion-yellow) !important; /* 활성 메뉴 강조 */
 }
 
 .active-nav:after {
@@ -135,11 +136,14 @@
   font-weight: 600;
   padding: 12px 24px;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* 그림자 추가로 입체감 향상 */
 }
 
 .nav-cta-btn:hover {
-  box-shadow: 0 0 20px 0 rgba(var(--notion-yellow-h), var(--notion-yellow-s), var(--notion-yellow-l), 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   transform: translateY(-2px);
+  background-color: var(--notion-yellow); /* 호버 시 배경색 변경 */
+  color: var(--fg-color) !important;
 }
 
 /* 헤딩 스타일 */
@@ -194,7 +198,7 @@
   margin-bottom: 1rem;
 }
 
-/* 버튼 스타일 */
+/* 버튼 스타일 - 애니메이션 수정 */
 .bullet-btn {
   background: var(--notion-blue);
   border: none;
@@ -216,36 +220,39 @@
   transform: translateY(-2px);
 }
 
-/* 신성한 느낌의 버튼 애니메이션 효과 */
+/* 수정된 버튼 애니메이션 효과 - 전체 채우기 */
 .bullet-btn:before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: rgba(255, 255, 255, 0.1);
-  transform: rotate(45deg);
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-30deg);
+  transition: 0.7s;
   pointer-events: none;
-  animation: lightBeam 5s infinite linear;
+  animation: fullLightBeam 3s infinite linear;
 }
 
-@keyframes lightBeam {
+@keyframes fullLightBeam {
   0% {
-    transform: rotate(45deg) translateX(-100%);
+    left: -100%;
   }
   100% {
-    transform: rotate(45deg) translateX(100%);
+    left: 200%;
   }
 }
 
-/* 콜아웃 스타일 */
+/* 콜아웃 스타일 - 가시성 개선 */
 .notion-callout {
+  background-color: white;
   border: 1px solid rgba(var(--fg-color-h), var(--fg-color-s), var(--fg-color-l), 0.1);
   border-radius: var(--border-radius);
   padding: 1.5rem;
   margin: 1.5rem 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
 }
 
 .notion-callout:hover {
@@ -255,9 +262,10 @@
 
 .notion-callout-text {
   margin-left: 12px;
+  color: var(--fg-color);
 }
 
-/* 색상 배경 콜아웃 - 네이비 */
+/* 색상 배경 콜아웃 - 가시성 개선 */
 .notion-gray_background_co {
   background: var(--notion-gray);
   border: none;
@@ -266,13 +274,15 @@
   padding: 2rem;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .notion-gray_background_co .notion-callout-text {
   color: white;
-  font-weight: 500;
+  font-weight: 600; /* 두께 증가 */
   position: relative;
   z-index: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* 텍스트 그림자 추가 */
 }
 
 /* 십자가 모양 배경 효과 - 신성한 느낌을 위한 장식 */
@@ -283,7 +293,7 @@
   left: 50%;
   width: 50px;
   height: 70px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.15); /* 밝기 증가 */
   transform: translate(-50%, -50%);
   z-index: 0;
 }
@@ -295,20 +305,21 @@
   left: 50%;
   width: 30px;
   height: 50px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.15); /* 밝기 증가 */
   transform: translate(-50%, -50%) rotate(90deg);
   z-index: 0;
 }
 
-/* 노란색 배경 콜아웃 - 금색으로 설정 */
+/* 노란색 배경 콜아웃 - 금색으로 설정 (가시성 개선) */
 .notion-yellow_background_co {
-  background: var(--notion-yellow_background);
+  background: var(--notion-yellow);
   border: none;
   border-radius: var(--border-radius);
   color: var(--fg-color);
   padding: 2rem;
   position: relative;
   border-left: 4px solid var(--notion-yellow);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .notion-yellow_background_co .notion-callout-text {
@@ -327,11 +338,12 @@
   padding: 0;
   position: relative;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .notion-toggle:hover {
   border-color: var(--notion-blue);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 .notion-toggle summary {
