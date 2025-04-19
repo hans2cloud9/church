@@ -26,8 +26,8 @@
   /* 네비게이션 컬러 - 글자색을 더 밝게 수정 */
   --navbar-fg-color: white;
   --navbar-bg-color: var(--fg-color);
-  --navbar-btn-bg-color: white; /* 버튼 배경을 더 밝게 */
-  --navbar-btn-fg-color: var(--fg-color); /* 버튼 글자색 유지 */
+  --navbar-btn-bg-color: transparent; /* 버튼 배경을 투명하게 */
+  --navbar-btn-fg-color: white; /* 버튼 글자색을 흰색으로 */
   
   /* 제목 크기 */
   --heading-font-size: 1.5rem;
@@ -77,8 +77,8 @@
   --fg-color: hsl(var(--fg-color-h), var(--fg-color-s), var(--fg-color-l));
   --fg-color-3: hsla(var(--fg-color-h), var(--fg-color-s), var(--fg-color-l), 0.8);
   
-  --navbar-btn-bg-color: var(--notion-yellow);
-  --navbar-btn-fg-color: var(--notion-gray);
+  --navbar-btn-bg-color: transparent;
+  --navbar-btn-fg-color: white;
 }
 
 /* 기본 레이아웃 스타일 */
@@ -92,30 +92,30 @@
   margin-top: 0 !important;
 }
 
-/* 네비게이션 바 - 글자색 가시성 개선 */
+/* 네비게이션 바 - 텍스트 기본색 흰색 */
 .bullet-navbar {
   background: var(--navbar-bg-color);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-item {
-  color: var(--navbar-fg-color) !important;
+  color: white !important;
   font-size: 18px;
-  font-weight: 600; /* 두께 증가 */
+  font-weight: 600;
   padding: 0.5rem 1.5rem;
   transition: all 0.3s ease;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* 텍스트 그림자 추가 */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-item:hover {
-  opacity: 0.9;
+  opacity: 1;
   background-color: transparent !important;
-  color: white !important; /* 호버 시 색상을 하얀색으로 변경 */
+  color: var(--notion-yellow) !important; /* 호버 시 골드 색상으로 변경 */
 }
 
 .active-nav {
   position: relative;
-  color: white !important; /* 활성 메뉴 강조 */
+  color: var(--notion-yellow) !important; /* 활성 메뉴는 골드 색상으로 */
 }
 
 .active-nav:after {
@@ -126,24 +126,26 @@
   transform: translateX(-50%);
   width: 20px;
   height: 2px;
-  background-color: white;
+  background-color: var(--notion-yellow);
 }
 
 .nav-cta-btn {
-  background-color: var(--navbar-btn-bg-color);
+  background-color: transparent;
+  border: 2px solid white;
   border-radius: var(--border-radius);
-  color: var(--navbar-btn-fg-color) !important;
+  color: white !important;
   font-weight: 600;
   padding: 12px 24px;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* 그림자 추가로 입체감 향상 */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .nav-cta-btn:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
   transform: translateY(-2px);
-  background-color: var(--notion-blue); /* 호버 시 배경색 변경 */
-  color: white !important; /* 호버 시 글자색을 하얀색으로 변경 */
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--notion-yellow) !important; /* 호버 시 골드 색상으로 변경 */
+  border-color: var(--notion-yellow);
 }
 
 /* 헤딩 스타일 */
@@ -198,13 +200,13 @@
   margin-bottom: 1rem;
 }
 
-/* 버튼 스타일 - 애니메이션 수정 */
+/* 버튼 스타일 - 흰색 텍스트로 수정 */
 .bullet-btn {
   background: var(--notion-blue);
   border: none;
   border-radius: var(--border-radius);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  color: white;
+  color: white !important;
   cursor: pointer;
   font-family: var(--primary-font);
   font-size: 1rem;
@@ -219,7 +221,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   transform: translateY(-2px);
   background-color: var(--fg-color);
-  color: white !important; /* 호버 시 글자색을 하얀색으로 변경 */
+  color: var(--notion-yellow) !important; /* 호버 시 골드 색상으로 변경 */
 }
 
 /* 수정된 버튼 애니메이션 효과 - 전체 채우기 */
@@ -431,10 +433,10 @@ details[open] summary:after {
   font-weight: 600;
 }
 
-/* 푸터 스타일 */
+/* 푸터 스타일 - 텍스트 흰색으로 수정 */
 .bullet-footer {
   background: var(--footer-bg-color);
-  color: var(--footer-fg-color);
+  color: white;
   padding: 3rem 0;
 }
 
@@ -448,7 +450,7 @@ details[open] summary:after {
 }
 
 .footer-link {
-  color: var(--footer-fg-color);
+  color: white;
   font-size: 0.95rem;
   opacity: 0.8;
   transition: all 0.3s ease;
@@ -456,11 +458,11 @@ details[open] summary:after {
 
 .footer-link:hover {
   opacity: 1;
-  color: white !important; /* 호버 시 글자색을 하얀색으로 변경 */
+  color: var(--notion-yellow) !important; /* 호버 시 골드 색상으로 변경 */
 }
 
 .footer-copyright {
-  color: var(--footer-fg-color);
+  color: white;
   font-size: 0.85rem;
   opacity: 0.6;
 }
