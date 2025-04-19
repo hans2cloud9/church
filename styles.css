@@ -118,21 +118,6 @@
   margin-top: 0 !important;
 }
 
-/* 섹션 구분 스타일링 - 각 섹션에 여백 추가 */
-.notion-h2 + .notion-text,
-.notion-h2 + .notion-column-list,
-.notion-h2 + .notion-collection-view-wrapper,
-.notion-h2 + .notion-callout {
-  margin-top: 1.5rem;
-}
-
-/* 섹션 간격 조정 */
-.notion-h2 {
-  margin-top: 4rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(var(--fg-color-h), var(--fg-color-s), var(--fg-color-l), 0.1);
-}
-
 /* 네비게이션 바 - 텍스트 기본색 흰색 */
 .bullet-navbar {
   background: var(--navbar-bg-color);
@@ -563,9 +548,32 @@ details[open] summary:after {
   padding: 0.5rem 0;
 }
 
-/* 예배안내 섹션 스타일링 */
-.notion-h2:contains("예배 안내") + div,
-.notion-h2:contains("예배안내") ~ .notion-column-list {
+/* 예배안내 섹션 스타일링 - 수정된 버전 */
+/* 예배안내 헤더 */
+#block-d6c7a6c4a7d64e2dbedf8bc2b16b5d16,  /* "예배안내" 헤더 아이디를 확인하고 변경해주세요 */
+#block-f5d901eba3d444a3b03b9eafe28c0aa3,  /* "예배 안내" 헤더 아이디를 확인하고 변경해주세요 */
+.notion-h2[data-block-id*="예배안내"],  /* 이 방법도 시도 */
+.notion-h2[data-block-id*="예배 안내"] {
+  position: relative;
+  padding-left: 45px;
+}
+
+/* 예배안내 헤더 이모지 */
+#block-d6c7a6c4a7d64e2dbedf8bc2b16b5d16:before,
+#block-f5d901eba3d444a3b03b9eafe28c0aa3:before,
+.notion-h2[data-block-id*="예배안내"]:before,
+.notion-h2[data-block-id*="예배 안내"]:before {
+  content: "⛪";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.8rem;
+}
+
+/* 예배안내 섹션 - 직접 타겟팅 */
+#block-5e9abea79eb94ddd814a98cca0a6fc75,  /* 예배안내 섹션 아이디를 확인하고 변경해주세요 */
+#block-8f237bed72894b7ca456db6c4ac77ef2,  /* 알맞은 아이디로 수정해주세요 */
+.notion-collection-list[data-block-id*="예배"] { /* 이 방법도 시도 */
   background: var(--light-navy-bg);
   border-radius: var(--border-radius);
   margin: 2rem 0;
@@ -575,31 +583,30 @@ details[open] summary:after {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* 예배안내 섹션 내 텍스트 색상 변경 */
-.notion-h2:contains("예배 안내") + div *,
-.notion-h2:contains("예배안내") ~ .notion-column-list * {
+/* 대안적 접근 - 일반적인 구조 타겟팅 */
+/* 예배안내 섹션 타겟팅 */
+.notion-column-list {
+  position: relative;
+}
+
+/* 첫 번째 컬럼 리스트를 예배안내 섹션으로 스타일링 */
+.notion-page > .notion-column-list:nth-of-type(1) {
+  background: var(--light-navy-bg);
+  border-radius: var(--border-radius);
+  margin: 2rem 0;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 예배안내 섹션 내 텍스트 색상 */
+.notion-page > .notion-column-list:nth-of-type(1) * {
   color: white !important;
 }
 
-/* 예배안내 섹션 내 이모지 추가 효과 */
-.notion-h2:contains("예배 안내"),
-.notion-h2:contains("예배안내") {
-  position: relative;
-  padding-left: 45px;
-}
-
-.notion-h2:contains("예배 안내"):before,
-.notion-h2:contains("예배안내"):before {
-  content: "⛪";
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-size: 1.8rem;
-}
-
 /* 예배안내 카드 스타일링 */
-.notion-h2:contains("예배 안내") ~ .notion-column-list .notion-column,
-.notion-h2:contains("예배안내") ~ .notion-column-list .notion-column {
+.notion-page > .notion-column-list:nth-of-type(1) .notion-column {
   background: rgba(255, 255, 255, 0.1);
   border-radius: var(--border-radius);
   padding: 1.5rem;
@@ -608,16 +615,14 @@ details[open] summary:after {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-.notion-h2:contains("예배 안내") ~ .notion-column-list .notion-column:hover,
-.notion-h2:contains("예배안내") ~ .notion-column-list .notion-column:hover {
+.notion-page > .notion-column-list:nth-of-type(1) .notion-column:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   background: rgba(255, 255, 255, 0.15);
 }
 
 /* 신성한 빛 효과 추가 */
-.notion-h2:contains("예배 안내") ~ .notion-column-list:before,
-.notion-h2:contains("예배안내") ~ .notion-column-list:before {
+.notion-page > .notion-column-list:nth-of-type(1):before {
   content: "";
   position: absolute;
   top: -50%;
@@ -643,9 +648,9 @@ details[open] summary:after {
   }
 }
 
-/* 예배와 말씀 섹션 스타일링 */
-.notion-h2:contains("예배와 말") + div,
-.notion-h2:contains("예배와 말씀") ~ .notion-collection-view-wrapper {
+/* 예배와 말씀 섹션 스타일링 - 다른 컬럼 리스트로 타겟팅 */
+.notion-page > .notion-column-list:nth-of-type(2),
+.notion-page > .notion-collection-view-wrapper:nth-of-type(1) {
   background: var(--light-golden-bg);
   border-radius: var(--border-radius);
   margin: 2rem 0;
@@ -655,8 +660,7 @@ details[open] summary:after {
 }
 
 /* 다가오는 행사 섹션 스타일링 */
-.notion-h2:contains("다가오는 행사") + div,
-.notion-h2:contains("다가오는 행사") ~ .notion-collection-view-wrapper {
+.notion-page > .notion-collection-view-wrapper:nth-of-type(2) {
   background: var(--very-light-navy-bg);
   border-radius: var(--border-radius);
   margin: 2rem 0;
@@ -665,90 +669,7 @@ details[open] summary:after {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* 컬렉션 카드에 그림자 효과 강화 */
-.notion-collection-card {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.notion-collection-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
-
 /* 태블릿 미디어 쿼리 */
 @media (max-width: 1024px) {
   :root {
-    --heading1: calc(var(--heading-font-size) * 2.5);
-    --heading2: calc(var(--heading-font-size) * 1.8);
-    --heading3: calc(var(--heading-font-size) * 1.3);
-    --container-width: 90%;
-    --notion-max-width: 90%;
-  }
-  
-  .notion-page {
-    padding: 0 5vw;
-  }
-  
-  /* 예배안내 섹션 반응형 조정 */
-  .notion-h2:contains("예배 안내") ~ .notion-column-list .notion-column,
-  .notion-h2:contains("예배안내") ~ .notion-column-list .notion-column {
-    padding: 1.2rem;
-    margin: 0.3rem;
-  }
-}
-
-/* 모바일 미디어 쿼리 */
-@media screen and (max-width: 768px) {
-  :root {
-    --heading1: calc(var(--heading-font-size) * 2);
-    --heading2: calc(var(--heading-font-size) * 1.6);
-    --heading3: calc(var(--heading-font-size) * 1.2);
-  }
-  
-  .notion-page {
-    padding: 0 4vw;
-  }
-  
-  .notion-h1:after {
-    width: 60px;
-  }
-  
-  .blog_page_content .notion-h1 {
-    font-size: 2rem;
-  }
-  
-  .blog_page_content .notion-h2 {
-    font-size: 1.6rem;
-  }
-  
-  .blog_page_content .notion-h3 {
-    font-size: 1.3rem;
-  }
-  
-  /* 예배안내 섹션 모바일 조정 */
-  .notion-h2:contains("예배 안내") + div,
-  .notion-h2:contains("예배안내") ~ .notion-column-list,
-  .notion-h2:contains("예배와 말") + div,
-  .notion-h2:contains("예배와 말씀") ~ .notion-collection-view-wrapper,
-  .notion-h2:contains("다가오는 행사") + div,
-  .notion-h2:contains("다가오는 행사") ~ .notion-collection-view-wrapper {
-    padding: 1.5rem 1rem;
-    margin: 1.5rem 0;
-  }
-}
-
-/* 모바일 최적화 */
-@media screen and (max-width: 640px) {
-  /* 모바일에서 너비 조정 */
-  :root {
-    --container-width: 90vw !important;
-    --notion-max-width: 90vw !important;
-  }
-  
-  /* 직접적인 너비 설정 */
-  .notion-app, 
-  .super-content,
-  .super-content-container,
-  .notion-frame,
-  .notion-page,
+    --heading1: calc(var(--heading-f
